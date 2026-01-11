@@ -1,44 +1,41 @@
-#
-# Changes to this file will be overwritten by `trmnlp pull`.
-#
-# Docs: https://help.usetrmnl.com/en/articles/10542599-importing-and-exporting-private-plugins#h_581fb988f0
-#
 ---
 strategy: polling
-no_screen_padding: "no"
-dark_mode: "no"
-static_data: ""
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
 polling_verb: get
-polling_url: "https://api.open-meteo.com/v1/forecast?latitude={{ latitude }}&longitude={{ longitude }}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto&forecast_days=3"
-polling_headers: "accept=application/json"
+polling_url: https://api.open-meteo.com/v1/forecast?latitude={{ latitude }}&longitude={{ longitude }}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto&forecast_days=3
+polling_headers: accept=application/json
+polling_body: 
+id: 221669
+custom_fields:
+- keyname: author_bio
+  name: About This Plugin
+  category: life,environment
+  field_type: author_bio
+  description: |
+    This is yet another weather plugin based on [TRMNL's Weather](https://usetrmnl.com/integrations/weather), but implemented as an extension and hence usable on BYOS setups.
+    <br><br>
+    <strong>Prerequisites</strong>
+    <br>
+    You will need your latitude and longitude. You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
+    <br><br>
+    <strong>Attributions</strong>
+    <br>
+    The weather data is from <a href="https://open-meteo.com">Open-Meteo</a>.<br>
+    The icons used are <a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">from the Material Design icons</a>.
+  github_url: https://github.com/jshiell/trmnl-national-rail-departures
+- keyname: latitude
+  name: Latitude
+  field_type: number
+  description: The latitude of the location to fetch weather data for.
+  help_text: You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
+  placeholder: Your latitude
+- keyname: longitude
+  name: Longitude
+  field_type: number
+  description: The longitude of the location to fetch weather data for.
+  help_text: You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
+  placeholder: Your longitude
 name: Weather
 refresh_interval: 30
-custom_fields:
-  - keyname: author_bio
-    name: About This Plugin
-    category: life,envionment
-    field_type: author_bio
-    description: |
-      This is yet another weather plugin based on [TRMNL's Weather](https://usetrmnl.com/integrations/weather), but implemented as an extension and hence usable on BYOS setups.
-      <br><br>
-      <strong>Prerequisites</strong>
-      <br>
-      You will need your latitude and longitude. You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
-      <br><br>
-      <strong>Attributions</strong>
-      <br>
-      The weather data is from <a href="https://open-meteo.com">Open-Meteo</a>.<br>
-      The icons used are <a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">from the Material Design icons</a>.
-    github_url: https://github.com/jshiell/trmnl-national-rail-departures
-  - keyname: latitude
-    name: Latitude
-    field_type: number
-    description: The latitude of the location to fetch weather data for.
-    help_text: You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
-    placeholder: "Your latitude"
-  - keyname: longitude
-    name: Longitude
-    field_type: number
-    description: The longitude of the location to fetch weather data for.
-    help_text: You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
-    placeholder: "Your longitude"
