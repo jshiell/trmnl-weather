@@ -1,6 +1,6 @@
-<div class="layout layout--col layout--stretch">
+<div class="layout layout--col layout--stretch-x">
     <div class="flex flex--row flex--stretch">
-        <div class="stretch">
+        <div class="flex flex--col flex--center">
             <div class="image image-stroke w--44">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
         </div>
         <div class="flex flex--col flex--left">
@@ -8,53 +8,56 @@
                 {{ current.temperature_2m }}
                 <span class="value value--xlarge">{{ current_units.temperature_2m }}</span>
             </div>
-            <div class="flex flex--row flex--left">
+            <div class="flex flex--row flex--left stretch-x">
                 <div class="divider--v"></div>
-                <div class="image image-stroke w--4">{{ sunrise_icon }}</div><span class="value value--xxsmall">{{ daily.sunrise[0] | date: "%H:%M" }}</span>
-                <div class="image image-stroke w--4">{{ sunset_icon }}</div><span class="value value--xxsmall">{{ daily.sunset[0] | date: "%H:%M" }}</span>
+                <div class="image image-stroke w--8">{{ sunrise_icon }}</div>
+                <div class="value value--xxsmall stretch-x">{{ daily.sunrise[0] | date: "%H:%M" }}</div>
+                <div class="image image-stroke w--8">{{ sunset_icon }}</div>
+                <div class="value value--xxsmall stretch-x">{{ daily.sunset[0] | date: "%H:%M" }}</div>
             </div>
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
-                <div class="image image-stroke w--4">{{ wind_icon }}</div>
-                <span class="value value--xxsmall">{{  current.wind_speed_10m }}{{ current_units.wind_speed_10m }} 
-                    {% # todo tidy up wind direction %}
-                    {{ current.wind_direction_10m }}
-                </span>
+                <div class="image image-stroke w--8">{{ wind_icon }}</div>
+                <div class="value value--xxsmall">
+                    {{  current.wind_speed_10m }}{{ current_units.wind_speed_10m }} 
+                    {{ wind_direction }}
+                </div>
             </div>
         </div>
         <div class="flex flex--col flex--stretch">
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
-                <div class="image image-stroke h--8 w--8">{{ temperature_icon }}</div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{{ current.apparent_temperature }}{{ current_units.apparent_temperature }}</span>
-                    <span class="label">Feels Like</span>
+                <div class="image image-stroke w--12">{{ temperature_icon }}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{{ current.apparent_temperature }}{{ current_units.apparent_temperature }}</div>
+                    <div class="label">Feels Like</div>
                 </div>
             </div>
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
-                <div class="image image-stroke h--8 w--8">{{ humidity_icon }}</div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{{ current.relative_humidity_2m }}{{ current_units.relative_humidity_2m }}</span>
-                    <span class="label">Humidity</span>
+                <div class="image image-stroke w--12">{{ humidity_icon }}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{{ current.relative_humidity_2m }}{{ current_units.relative_humidity_2m }}</div>
+                    <div class="label">Humidity</div>
                 </div>
             </div>
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
-                <div class="image image-stroke h--8 w--8">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{% render "show_weather_description", weather_code: current.weather_code %}</span>
-                    <span class="label">Right Now</span>
+                <div class="image image-stroke w--12">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{% render "show_weather_description", weather_code: current.weather_code %}</div>
+                    <div class="label">Right Now</div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="divider--h"></div>
     <div class="flex flex--row flex--stretch">
         <div class="flex flex--col flex--stretch">
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
                 <div class="image image-stroke w--16">{% render "show_weather_icon", weather_code: daily.weather_code[0] %}</div>
-                <div class="flex flex--col flex--left">
+                <div class="flex flex--col flex--left gap--xsmall">
                     <div class="value value--small">{% render "show_weather_description", weather_code: daily.weather_code[0] %}</div>
                     <div class="label">Today</div>
                 </div>
@@ -62,42 +65,46 @@
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
                 <div class="image image-stroke w--16">{% render "show_weather_icon", weather_code: daily.weather_code[1] %}</div>
-                <div class="flex flex--col flex--left">
+                <div class="flex flex--col flex--left gap--xsmall">
                     <div class="value value--small">{% render "show_weather_description", weather_code: daily.weather_code[1] %}</div>
                     <div class="label">Tomorrow</div>
                 </div>
             </div>
         </div>
         <div class="flex flex--col flex--stretch">
-            <div class="flex flex--row flex--stretch">
+            <div class="flex flex--row">
                 <div class="divider--v"></div>
-                <div class="flex flex--row flex--left">
-                    <div class="image image-stroke h--8 w--8">{{ uv_icon }}</div>
-                    <div class="flex flex--col flex--left">
-                        <span class="value value--small">{{ daily.uv_index_max[0] }}{{ daily_units.uv_index_max }}</span>
-                        <span class="label">UV</span>
+                <div class="grid grid--cols-2">
+                    <div class="flex flex--row flex--left">
+                        <div class="image image-stroke w--10">{{ uv_icon }}</div>
+                        <div class="flex flex--col flex--left gap--xsmall">
+                            <span class="value value--small">{{ daily.uv_index_max[0] | round }}{{ daily_units.uv_index_max }}</span>
+                            <span class="label">UV</span>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex--row flex--left">
-                    <div class="image image-stroke h--8 w--8">{{ precipitation_icon }}</div>
-                    <div class="flex flex--col flex--left">
-                        <span class="value">{{ daily.precipitation_probability_max[0] }}{{ daily_units.precipitation_probability_max }}</span>
+                    <div class="flex flex--row flex--left">
+                        <div class="image image-stroke w--10">{{ precipitation_icon }}</div>
+                        <div>
+                            <span class="value value--small">{{ daily.precipitation_probability_max[0] }}{{ daily_units.precipitation_probability_max }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex--row flex--stretch">
+            <div class="flex flex--row">
                 <div class="divider--v"></div>
-                <div class="flex flex--row flex--left">
-                    <div class="image image-stroke h--8 w--8">{{ uv_icon }}</div>
-                    <div class="flex flex--col flex--left">
-                        <span class="value value--small">{{ daily.uv_index_max[1] }}{{ daily_units.uv_index_max }}</span>
-                        <span class="label">UV</span>
+                <div class="grid grid--cols-2">
+                    <div class="flex flex--row flex--left">
+                        <div class="image image-stroke w--10">{{ uv_icon }}</div>
+                        <div class="flex flex--col flex--left gap--xsmall">
+                            <div class="value value--small">{{ daily.uv_index_max[1] | round }}{{ daily_units.uv_index_max }}</div>
+                            <div class="label">UV</div>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex--row flex--left">
-                    <div class="image image-stroke h--8 w--8">{{ precipitation_icon }}</div>
-                    <div class="flex flex--col flex--left">
-                        <span class="value">{{ daily.precipitation_probability_max[1] }}{{ daily_units.precipitation_probability_max }}</span>
+                    <div class="flex flex--row flex--left">
+                        <div class="image image-stroke w--10">{{ precipitation_icon }}</div>
+                        <div>
+                            <span class="value value--small">{{ daily.precipitation_probability_max[1] }}{{ daily_units.precipitation_probability_max }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,32 +112,41 @@
         <div class="flex flex--col flex--stretch">
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
-                <div class="image image-stroke h--8 w--8">{{ temperature_icon }}</div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{{ daily.temperature_2m_min[0] }}{{ daily_units.temperature_2m_min }}</span>
-                    <span class="label">Min</span>
-                </div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{{ daily.temperature_2m_max[0] }}{{ daily_units.temperature_2m_max }}</span>
-                    <span class="label">Max</span>
+                <div class="image image-stroke w--10">{{ temperature_icon }}</div>
+                <div class="grid grid--cols-2">
+                    <div class="flex flex--col flex--left gap--xsmall">
+                        <span class="value value--small">{{ daily.temperature_2m_min[0] }}{{ daily_units.temperature_2m_min }}</span>
+                        <span class="label">Min</span>
+                    </div>
+                    <div class="flex flex--col flex--left gap--xsmall">
+                        <span class="value value--small">{{ daily.temperature_2m_max[0] }}{{ daily_units.temperature_2m_max }}</span>
+                        <span class="label">Max</span>
+                    </div>
                 </div>
             </div>
             <div class="flex flex--row flex--left">
                 <div class="divider--v"></div>
-                <div class="image image-stroke h--8 w--8">{{ temperature_icon }}</div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{{ daily.temperature_2m_min[1] }}{{ daily_units.temperature_2m_min }}</span>
-                    <span class="label">Min</span>
-                </div>
-                <div class="flex flex--col flex--left">
-                    <span class="value value--small">{{ daily.temperature_2m_max[1] }}{{ daily_units.temperature_2m_max }}</span>
-                    <span class="label">Max</span>
+                <div class="image image-stroke w--10">{{ temperature_icon }}</div>
+                <div class="grid grid--cols-2">
+                    <div class="flex flex--col flex--left gap--xsmall">
+                        <span class="value value--small">{{ daily.temperature_2m_min[1] }}{{ daily_units.temperature_2m_min }}</span>
+                        <span class="label">Min</span>
+                    </div>
+                    <div class="flex flex--col flex--left gap--xsmall">
+                        <span class="value value--small">{{ daily.temperature_2m_max[1] }}{{ daily_units.temperature_2m_max }}</span>
+                        <span class="label">Max</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="title_bar">
-    <span class="title">Weather</span>
-    <span class="instance">Where? ({{  current.time | date: "%H:%M" }})</span>
+    <span class="title">
+        Weather
+        {%  unless trmnl.plugin_settings.instance_name == "instance_name" %}
+            - {{ trmnl.plugin_settings.instance_name }}
+        {% endunless %}
+    </span>
+    <span class="instance">Updated at {{  current.time | date: "%H:%M" }}</span>
 </div>
