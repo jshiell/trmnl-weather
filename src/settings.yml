@@ -27,13 +27,13 @@ custom_fields:
   github_url: https://github.com/jshiell/trmnl-national-rail-departures
 - keyname: latitude
   name: Latitude
-  field_type: number
+  field_type: string
   description: The latitude of the location to fetch weather data for.
   help_text: You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
   placeholder: Your latitude
 - keyname: longitude
   name: Longitude
-  field_type: number
+  field_type: string
   description: The longitude of the location to fetch weather data for.
   help_text: You can find your latitude and longitude using a service like <a href="https://www.latlong.net/">LatLong.net</a>.
   placeholder: Your longitude
