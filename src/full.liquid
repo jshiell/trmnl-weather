@@ -5,7 +5,7 @@
         </div>
         <div class="flex flex--col flex--left">
             <div class="value value--xxxlarge stretch-y flex flex--top">
-                {{ current.temperature_2m }}
+                {{ current.temperature_2m | round }}
                 <span class="value value--xlarge">{{ current_units.temperature_2m }}</span>
             </div>
             <div class="flex flex--row flex--left stretch-x">
