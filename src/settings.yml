@@ -24,7 +24,7 @@ custom_fields:
     <br>
     The weather data is from <a href="https://open-meteo.com">Open-Meteo</a>.<br>
     The icons used are <a href="https://github.com/Templarian/MaterialDesign/blob/master/LICENSE">from the Material Design icons</a>.
-  github_url: https://github.com/jshiell/trmnl-national-rail-departures
+  github_url: https://github.com/jshiell/trmnl-weather
 - keyname: latitude
   name: Latitude
   field_type: string
