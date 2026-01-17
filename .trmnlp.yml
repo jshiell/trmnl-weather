@@ -10,6 +10,7 @@ watch:
 custom_fields:
   latitude: 51.76059467733187
   longitude: -0.3278049402736141
+  temperature_unit: celsius
 
 # override variables
 variables:
