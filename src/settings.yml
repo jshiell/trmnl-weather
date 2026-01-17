@@ -46,4 +46,4 @@ custom_fields:
   - Celsius: celsius
   - Fahrenheit: fahrenheit
 name: Weather
-refresh_interval: 30
+refresh_interval: 15
