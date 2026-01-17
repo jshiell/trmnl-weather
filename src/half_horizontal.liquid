@@ -1,1 +1,63 @@
-half horizontal!
+<div class="layout layout--col layout--stretch-x">
+    <div class="flex flex--row flex--stretch">
+        <div class="flex flex--col flex--center">
+            <div class="image image-stroke w--44">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
+        </div>
+        <div class="flex flex--col flex--left">
+            <div class="value value--xlarge stretch-y flex flex--top">
+                {{ current.temperature_2m | round }}
+                <span class="value value--xlarge">{{ current_units.temperature_2m }}</span>
+            </div>
+            <div class="flex flex--row flex--left stretch-x">
+                <div class="divider--v"></div>
+                <div class="image image-stroke w--8">{{ sunrise_icon }}</div>
+                <div class="value value--xxsmall stretch-x">{{ daily.sunrise[0] | date: "%H:%M" }}</div>
+                <div class="image image-stroke w--8">{{ sunset_icon }}</div>
+                <div class="value value--xxsmall stretch-x">{{ daily.sunset[0] | date: "%H:%M" }}</div>
+            </div>
+            <div class="flex flex--row flex--left">
+                <div class="divider--v"></div>
+                <div class="image image-stroke w--8">{{ wind_icon }}</div>
+                <div class="value value--xxsmall">
+                    {{  current.wind_speed_10m }}{{ current_units.wind_speed_10m }} 
+                    {{ wind_direction }}
+                </div>
+            </div>
+        </div>
+        <div class="flex flex--col flex--stretch">
+            <div class="flex flex--row flex--left">
+                <div class="divider--v"></div>
+                <div class="image image-stroke w--12">{{ temperature_icon }}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{{ current.apparent_temperature }}{{ current_units.apparent_temperature }}</div>
+                    <div class="label">Feels Like</div>
+                </div>
+            </div>
+            <div class="flex flex--row flex--left">
+                <div class="divider--v"></div>
+                <div class="image image-stroke w--12">{{ humidity_icon }}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{{ current.relative_humidity_2m }}{{ current_units.relative_humidity_2m }}</div>
+                    <div class="label">Humidity</div>
+                </div>
+            </div>
+            <div class="flex flex--row flex--left">
+                <div class="divider--v"></div>
+                <div class="image image-stroke w--12">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{% render "show_weather_description", weather_code: current.weather_code %}</div>
+                    <div class="label">Right Now</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title_bar">
+    <span class="title">
+        Weather
+        {%  unless trmnl.plugin_settings.instance_name == "instance_name" %}
+            - {{ trmnl.plugin_settings.instance_name }}
+        {% endunless %}
+    </span>
+    <span class="instance">Updated at {{  current.time | date: "%H:%M" }}</span>
+</div>
