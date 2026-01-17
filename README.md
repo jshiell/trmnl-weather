@@ -2,7 +2,7 @@
 
 Yet another weather plugin for a [TRMNL](https://usetrmnl.com) device.
 
-The layout is ~stolen from~ strongly based on the [TRMNL Weather](https://usetrmnl.com/integrations/weather) plugin; however, it's written as a normal extension and hence usable on BYOS instances.
+The layout is ~stolen from~ strongly based on the [TRMNL Weather](https://usetrmnl.com/integrations/weather) plugin; however, it's written as a normal extension and hence usable on BYOS instances. It also offers a bit more precision for those of us using celsius.
 
 The data is sourced from [Open-Meteo](https://open-meteo.com).
 
