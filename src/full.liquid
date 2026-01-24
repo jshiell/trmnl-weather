@@ -1,7 +1,7 @@
 <div class="layout layout--col layout--stretch-x">
     <div class="flex flex--row flex--stretch">
         <div class="flex flex--col flex--center">
-            <div class="image image-stroke w--44">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
+            <div class="image image-stroke w--44 lg:w--56">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
         </div>
         <div class="flex flex--col flex--left">
             <div class="value value--xxxlarge stretch-y flex flex--top">
@@ -49,6 +49,21 @@
                     <div class="label">Right Now</div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="hidden lg:visible">
+        <div class="flex flex--row flex--stretch mt--8 mb--8">
+            {% assign start_index = 'now' | date: "%H" | plus: 1 %}
+            {% assign end_index = start_index | plus: 5 %}
+            {% for i in (start_index..end_index) %}
+            <div class="flex flex--col flex--stretch">
+                <span class="value value--small text--center">{{ hourly.time[i] | date: "%H:%M" }}</span>
+                <div class="flex flex--col flex--center">
+                    <div class="image image-stroke w--16">{% render "show_weather_icon", weather_code: hourly.weather_code[i] %}</div>
+                </div>
+                <span class="value value--small text--center">{{ hourly.temperature_2m[i] }}{{ hourly_units.temperature_2m }}</span>
+            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="flex flex--row flex--stretch">
