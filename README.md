@@ -1,4 +1,4 @@
-# TRMNL Home Assistant Entities
+# TRMNL Weather BYOS (Open Meteo)
 
 Yet another weather plugin for a [TRMNL](https://usetrmnl.com) device.
 
