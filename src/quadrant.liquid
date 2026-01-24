@@ -23,6 +23,34 @@
             </div>
         </div>
     </div>
+    <div class="hidden lg:visible">
+        <div class="flex flex--row flex--stretch mb--4">
+            <div class="flex flex--row flex--left">
+                <div class="image image-stroke w--12">{{ temperature_icon }}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{{ current.apparent_temperature }}{{ current_units.apparent_temperature }}</div>
+                    <div class="label">Feels Like</div>
+                </div>
+            </div>
+            <div class="flex flex--row flex--left">
+                <div class="divider--v"></div>
+                <div class="image image-stroke w--12">{{ humidity_icon }}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{{ current.relative_humidity_2m }}{{ current_units.relative_humidity_2m }}</div>
+                    <div class="label">Humidity</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex--row flex--stretch">
+            <div class="flex flex--row flex--left">
+                <div class="image image-stroke w--12">{% render "show_weather_icon", weather_code: current.weather_code %}</div>
+                <div class="flex flex--col flex--left gap--xsmall">
+                    <div class="value value--small">{% render "show_weather_description", weather_code: current.weather_code %}</div>
+                    <div class="label">Right Now</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="title_bar">
     <span class="title">

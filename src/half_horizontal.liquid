@@ -51,6 +51,56 @@
             </div>
         </div>
     </div>
+    <div class="hidden lg:visible">
+        <div class="flex flex--row flex--stretch mt--4">
+            <div class="flex flex--col flex--stretch">
+                <div class="flex flex--row flex--left">
+                    <div class="divider--v"></div>
+                    <div class="image image-stroke w--16">{% render "show_weather_icon", weather_code: daily.weather_code[0] %}</div>
+                    <div class="flex flex--col flex--left gap--xsmall">
+                        <div class="value value--small">{% render "show_weather_description", weather_code: daily.weather_code[0] %}</div>
+                        <div class="label">Today</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex--col flex--stretch">
+                <div class="flex flex--row">
+                    <div class="divider--v"></div>
+                    <div class="grid grid--cols-2">
+                        <div class="flex flex--row flex--left">
+                            <div class="image image-stroke w--10">{{ uv_icon }}</div>
+                            <div class="flex flex--col flex--left gap--xsmall">
+                                <span class="value value--small">{{ daily.uv_index_max[0] | round: 1 }}{{ daily_units.uv_index_max }}</span>
+                                <span class="label">UV</span>
+                            </div>
+                        </div>
+                        <div class="flex flex--row flex--left">
+                            <div class="image image-stroke w--10">{{ precipitation_icon }}</div>
+                            <div>
+                                <span class="value value--small">{{ daily.precipitation_probability_max[0] }}{{ daily_units.precipitation_probability_max }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex--col flex--stretch">
+                <div class="flex flex--row flex--left">
+                    <div class="divider--v"></div>
+                    <div class="image image-stroke w--10">{{ temperature_icon }}</div>
+                    <div class="grid grid--cols-2">
+                        <div class="flex flex--col flex--left gap--xsmall">
+                            <span class="value value--small">{{ daily.temperature_2m_min[0] }}{{ daily_units.temperature_2m_min }}</span>
+                            <span class="label">Min</span>
+                        </div>
+                        <div class="flex flex--col flex--left gap--xsmall">
+                            <span class="value value--small">{{ daily.temperature_2m_max[0] }}{{ daily_units.temperature_2m_max }}</span>
+                            <span class="label">Max</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="title_bar">
     <span class="title">
